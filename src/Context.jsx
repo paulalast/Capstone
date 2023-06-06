@@ -28,9 +28,15 @@ function ContextProvider({ children }) {
 	function addToCart(newItem) {
 		setCartItems(prevItems => [...prevItems, newItem])
 	}
+
 	function removeFromCart(id) {
 		setCartItems(prevItems => prevItems.filter(item => item.id !== id))
 	}
+
+	function emptyCart() {
+		setCartItems([])
+	}
+
 	return (
 		<Context.Provider
 			value={{
@@ -39,6 +45,7 @@ function ContextProvider({ children }) {
 				cartItems,
 				addToCart,
 				removeFromCart,
+				emptyCart,
 			}}
 		>
 			{children}
